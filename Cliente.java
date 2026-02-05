@@ -17,4 +17,9 @@ public class Cliente {
     public String getNombre(){
         return this.nombre;
     }
+
+    @Override
+    public String toString() {
+        return "[" +this.nombre+"] ";
+    }
 }
