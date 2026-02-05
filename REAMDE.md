@@ -33,7 +33,7 @@
 - Cada operación debe tardar n tiempo en ejecutarse entre 200 y 1200ms
 
 # Salida por consola
-- Cajero, Cliente,Cantidad Solicitada, OK / Denegado, saldo tras la operación, tiempo simulado
+- Cajero*, Cliente,Cantidad Solicitada, OK / Denegado, saldo tras la operación, tiempo simulado
 - FORMATO
 - [Cajero-1] Cliente Ana solicita 120€ -> OK | saldo restante: 380€ | t=540ms
 
