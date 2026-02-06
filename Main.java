@@ -20,19 +20,19 @@ public class Main {
     }
 
     private static Thread getThread(Cajero cajero) {
-        int n = r.nextInt(200, 1201);
 
-        return new Thread(()-> {
+        return new Thread(()-> {g
             cajero.ejecuta(clientesList);
 
             cajero.getTransacciones().forEach((x,y) ->{
                 y.forEach(c -> {
                     try {
+                        int n = r.nextInt(200, 1201);
                         Thread.sleep(n);
+                        System.out.println("["+cajero.getNombre()+"] El cliente "+c.getNombre()+" solicita "+ c.getMonto()  +"€, ha sacado dinero: " + x+", tiempo de simulación: " +  n +"ms" );
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                    System.out.println("["+cajero.getNombre()+"] El cliente "+c.getNombre()+" solicita "+ c.getMonto()  +"€, ha sacado dinero: " + x+", tiempo de simulación: " +  n +"ms" );
                 });
             });
         });
@@ -73,8 +73,8 @@ public class Main {
     }
 
     private static void imprimirResultadoFinal() {
-        int saldoFinal = miBanco.getCantidadTotal();
 
+        int saldoFinal = miBanco.getCantidadTotal();
         int operacionesCorrectas = misCajeros.stream().mapToInt(p -> p.getTransacciones().get(true).size()).sum();
         int operacionesDenegadas = misCajeros.stream().mapToInt(p -> p.getTransacciones().get(false).size()).sum();
         int totalRetirado = misCajeros.stream().mapToInt(Cajero::getTotalRetirado).sum();
@@ -82,10 +82,10 @@ public class Main {
                 misCajeros.stream().mapToInt(c -> c.getTransacciones().get(false).size()).sum();
 
         System.out.println("\n \t === Resumen Final === \n");
-        System.out.println("Saldo final: "+ saldoFinal);
+        System.out.println("Saldo final: "+ saldoFinal+"€");
         System.out.println("Operaciones OK: " + operacionesCorrectas);
         System.out.println("Operaciones Denegadas: " + operacionesDenegadas);
-        System.out.println("Total Retirado: " + totalRetirado);
+        System.out.println("Total Retirado: " + totalRetirado+"€");
         System.out.println("Clientes Atendidos: " + clientesAtendidos);
 
     }
