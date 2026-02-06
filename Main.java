@@ -21,15 +21,16 @@ public class Main {
 
     private static Thread getThread(Cajero cajero) {
 
-        return new Thread(()-> {g
+        return new Thread(()-> {
             cajero.ejecuta(clientesList);
 
             cajero.getTransacciones().forEach((x,y) ->{
+                String operacion = x ? "aceptada" : "rechazada";
                 y.forEach(c -> {
                     try {
                         int n = r.nextInt(200, 1201);
                         Thread.sleep(n);
-                        System.out.println("["+cajero.getNombre()+"] El cliente "+c.getNombre()+" solicita "+ c.getMonto()  +"€, ha sacado dinero: " + x+", tiempo de simulación: " +  n +"ms" );
+                        System.out.printf("[%s] El cliente %s solicita -> %d€ | operación: %s | tiempo: %dms\n",cajero.getNombre(),c.getNombre(),c.getMonto(), operacion, n);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
